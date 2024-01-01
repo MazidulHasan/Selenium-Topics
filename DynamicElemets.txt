@@ -1,0 +1,31 @@
+https://www.scaler.com/topics/how-to-handle-dynamic-elements-in-selenium/
+
+XPath with dynamic attributes:
+// Example: Locating a dynamic element with partial attribute value using XPath
+String partialAttributeValue = "dynamic";
+By xpathLocator = By.xpath("//input[contains(@id, '" + partialAttributeValue + "')]");
+WebElement element = driver.findElement(xpathLocator);
+
+
+
+CSS selectors with dynamic classes or IDs:
+// Example: Locating a dynamic element with a dynamic class using a CSS selector
+String dynamicClass = "dynamic";
+By cssLocator = By.cssSelector("input[class*='" + dynamicClass + "']");
+WebElement element = driver.findElement(cssLocator);
+
+
+Using relative element positions:
+// Example: Locating a dynamic element using relative element positions
+By parentLocator = By.id("parentElement");
+By dynamicLocator = By.xpath("./child::input");
+WebElement parentElement = driver.findElement(parentLocator);
+WebElement dynamicElement = parentElement.findElement(dynamicLocator);
+
+Explicit waits:
+Selenium provides explicit wait mechanisms that allow you to wait for specific conditions to be met before locating an element. You can use methods like WebDriverWait and 
+expected conditions like visibilityOfElementLocated or elementToBeClickable to wait until the dynamic element becomes visible or interactive before locating it.
+// Example: Locating a dynamic element using explicit wait
+By dynamicLocator = By.id("dynamicElement");
+WebDriverWait wait = new WebDriverWait(driver, 10);
+WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(dynamicLocator));
