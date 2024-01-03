@@ -1,0 +1,20 @@
+Implicit Waits:
+Implicit waits are set at the beginning of the script and are applicable for the entire duration of the WebDriver instance. They instruct the WebDriver to wait for a specified amount of time when trying to locate an element before throwing an exception.
+
+WebDriver driver = new ChromeDriver();
+driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+In this example, the implicit wait is set to 10 seconds. If an element is not immediately found, the WebDriver will wait for up to 10 seconds before throwing a NoSuchElementException.
+
+Explicit Waits:
+Explicit waits are applied to a particular element and are more flexible than implicit waits. They wait for a certain condition to be met before proceeding with the execution of the script.
+
+WebDriverWait wait = new WebDriverWait(driver, 10);
+WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("exampleElement")));
+In this example, the script waits for a maximum of 10 seconds for the element with the specified ID to become visible. The ExpectedConditions class provides a variety of conditions like visibility, clickability, presence, etc., that can be used with explicit waits.
+
+Another example using ExpectedConditions for an element to be clickable:
+WebDriverWait wait = new WebDriverWait(driver, 10);
+WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.id("exampleElement")));
+This waits for the element to be clickable within a 10-second time frame.
+
+Both implicit and explicit waits have their use cases, and often, a combination of both is employed in Selenium test scripts to ensure efficient and reliable test automation.
